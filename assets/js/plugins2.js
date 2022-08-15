@@ -212,8 +212,8 @@
 		},
 
 		// Loaders
-		ajaxLoad   : null,
-		imgPreload : null,
+		// ajaxLoad   : null,
+		// imgPreload : null,
 
 		// Some collections
 		transitions : {},
