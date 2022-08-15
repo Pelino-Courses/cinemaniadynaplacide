@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-2"></div>
+        <div class="col-lg-6 col-md-8 login-box" style="background-color: rgb(95, 179, 172);">
+            <div class="col-lg-12 login-title">
+                Sign In
+            </div>
+            <div class="col-lg-12 login-form">
+                <div class="col-lg-12 login-form" >
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label class="form-control-label" style="color: black; font-weight: bold;">EMAIL</label>
+                            <input type="email" placeholder="Email" name="email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label" style="color: black; font-weight: bold;">PASSWORD</label>
+                            <input type="password" placeholder="Password" name="password" class="form-control" i>
+                        </div>
+
+                        {% for message in messages %}
+                            <p id="messages" class="fadeIn fith">{{message}}</p>
+                        {% endfor %}
+
+                        <div class="col-lg-12 loginbttm">
+                            <div class="col-lg-6 login-btm login-text" style="color: black;">
+                                <p class="text-dark" style="color: black; font-weight: bold;">Don't have an account? <a href="/register" style="color: black; font-weight: bold;">Sign Up</a></p>
+                            </div>
+                            <div class="col-lg-6 login-btm login-button">
+                                <button type="submit" class="btn p-4 btn-outline-primary">LOGIN</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-2"></div>
+        </div>
+    </div>
+    
+{% endblock  %}

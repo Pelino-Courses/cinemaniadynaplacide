@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block header %}
+<!--preloading-->
+<div id="preloader">
+    <div id="status">
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<!-- BEGIN | Header -->
+<header class="ht-header">
+    <div class="container">
+        <nav class="navbar navbar-default navbar-custom">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header logo">
+                <div class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only"></span>
+                    <div id="nav-icon1">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <h1 style="color: white;">CINEMANIA</h1>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav flex-child-menu menu-left">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a href="/">
+                            Home
+                        </a>
+                    </li>
+                    <li><a href="/movies">Favorite Movies</a></li>
+                    <li><a href="/add-movie">Add Movie</a></li>
+
+                    <!-- <li class="dropdown first">
+                        <a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">
+                            Movies<i class="fa fa-angle-down" aria-hidden="true"></i>
+                        </a>
+                        <ul class="dropdown-menu level1">
+                            <li><a href="/movies">Favorite Movies</a></li>
+                            <li><a href="/add-movie">Add Movie</a></li>
+                        </ul>
+                    </li> -->
+                </ul>
+                <ul class="nav navbar-nav flex-child-menu menu-right">
+                    {% if not request.user.is_authenticated %}
+                    <li><a href="/login">LOG In</a></li>
+                    {% endif %}
+                    {% if request.user.is_authenticated %}
+                    <li><a href="/logout">LOG OUT </a></li>
+                    {% endif %}
+                    {% if not request.user.is_authenticated %}
+                    <li class="btn"><a href="/register">sign up</a></li>
+                    {% endif %}
+                    {% if request.user.is_authenticated %}
+                    <li class="text-capitalize"><a href="/profile"> {{ request.user.firstname }} {{ request.user.lastname }} </a></li>
+                    {% endif %}
+                    {% if request.user.is_authenticated %}
+                    <li>
+                        <a class="mt-n5 pt-n4" href="/profile">
+                            <div style="margin-top: -4rem !important;" class="user-img">
+                                {% if request.user.profile_pic %}
+                                <a href="#"><img width="50" height="50" class="rounded-50" src="{{request.user.profile_pic.url}}" alt=""><br></a>
+                                {% else %}
+                                <a href="#"><img width="50" height="50" class="rounded-50" src="{% static '/images/user.webp' %}" alt=""><br></a>
+                                {% endif %}
+                            </div>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+    </div>
+</header>
+<!-- END | Header -->
+{% endblock %}

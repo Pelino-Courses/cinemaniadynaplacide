@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block header %}
+	{% include 'includes/header.html' %}
+{% endblock  %}
+{% block content %}
+<div class="hero user-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero-ct">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="page-single">
+	<div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-2"></div>
+            <div class="col-lg-6 col-md-8 login-box" style="background-color: rgb(95, 179, 172);">
+                <div class="col-lg-12 login-form">
+                    <div class="col-lg-12 login-form">
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form }}
+                            {% for message in messages %}
+                                <p id="messages" class="fadeIn fith">{{message}}</p>
+                            {% endfor %}
+                            <div class="col-lg-12 loginbttm">
+                                <div class="col-lg-6 login-btm login-text">
+                                   {% comment %}  {% endcomment %}
+                                </div>
+                                <p style="color: black; font-weight: bold;">N.B: Trailer is for trailer video</p>
+                                <div class="col-lg-6 login-btm login-button">
+                                    <button type="submit" class="btn p-4 btn-outline-primary">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-2"></div>
+            </div>
+        </div>
+</div>
+<style>
+    .errorlist{
+        color: red !important;
+        text-transform: capitalize !important;
+    }
+</style>
+<script>
+    var form_fields = document.getElementsByTagName('input')
+    form_fields[2].placeholder='Enter Movie Title';
+    form_fields[3].placeholder='Release date';
+    form_fields[4].placeholder='Main actor...';
+    form_fields[5].placeholder='Enter movie caption ...';        
+    form_fields[6].placeholder='Movie link...'; 
+    form_fields[7].placeholder='Posted By...'; 
+    for (var field in form_fields){
+      form_fields.className += 'form-control'
+    }    
+  </script>
+{% endblock  %}
+{% block footer %}
+	{% include 'includes/footer.html' %}
+{% endblock  %}

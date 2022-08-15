@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row" >
+        <div class="col-lg-3 col-md-2"></div>
+        <div class="col-lg-6 col-md-8 login-box mb-5 mt-0" style="background-color: rgb(95, 179, 172);">
+            <div class="col-lg-12 text-14 login-title">
+                Create An Account
+            </div>
+            <div class="col-lg-12 login-form mb-5">
+                <div class="col-lg-12 login-form">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group my-1">
+                            <label for="">First Name</label>
+                            {{form.firstname}}
+                        </div>
+                        <div class="form-group my-1">
+                            <label for="">Last Name</label>
+                            {{form.lastname}}
+                        </div>
+                        <div class="form-group my-1">
+                            <label for="">Username</label>
+                            {{form.username}}
+                        </div>
+                        <div class="form-group my-1">
+                            <label for="">Email</label>
+                            {{form.email}}
+                        </div>
+                        <div class="form-group my-1">
+                            <label for="">Gender</label>
+                            {{form.gender}}
+                        </div>
+                        <div class="form-group my-1">
+                            <label for="">Age</label>
+                            {{form.age}}
+                        </div>
+
+                        <div class="form-group my-1">
+                            <label for="">Password</label>
+                            {{form.password1}}
+                        </div>
+
+                        <div class="form-group my-1">
+                            <label for="">Confirm Password</label>
+                            {{form.password2}}
+                        </div>
+                        <p class="text-danger errorlist">{{form.errors}}</p>
+                        <div class="col-lg-12 loginbttm mb-4">
+                            <div class="col-lg-6 login-btm login-text">
+                                <div class="col-lg-6 login-btm login-text">
+                                    <p class="text-dark" style="color: black; font-weight: bold;">Already have an account! <a href="/login" style="color: black; font-weight: bold;">Login</a></p>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 login-btm login-button">
+                                <button type="submit" class="btn p-4 btn-outline-primary">Register</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-2"></div>
+        </div>
+    </div>
+    <style>
+        .errorlist{
+            color: red !important;
+            text-transform: capitalize !important;
+        }
+    </style>
+    <script>
+        var form_fields = document.getElementsByTagName('input')
+        form_fields[1].placeholder='Enter Firstname';
+        form_fields[2].placeholder='Enter Lastname...';
+        form_fields[3].placeholder='Enter Username...';
+        form_fields[4].placeholder='Enter Email...';        
+        form_fields[5].placeholder='Enter Age...'; 
+        form_fields[6].placeholder='Enter Password...'; 
+        form_fields[7].placeholder='Confirm Password...'; 
+        for (var field in form_fields){
+          form_fields.className += 'form-control'
+        }    
+      </script>
+{% endblock  %}

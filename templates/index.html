@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<body>
+
+{% include 'includes/header.html' %}
+
+<div class="slider movie-items">
+	<div class="container">
+		<div class="row">
+	    	<div  class="slick-multiItemSlider">
+	    		{% for item in movies %}
+				<div class="movie-item">
+	    			<div class="mv-img">
+	    				<a href="#"><img src="{{ item.wallpaper.url }}" alt="" width="285" height="437"></a>
+	    			</div>
+	    			<div class="title-in">
+	    				<div class="cate">
+	    					<span class="blue"><a href="#">{{ item.genre }}</a></span>
+	    				</div>
+	    				<h6><a href="#">{{ item.movie_title }}</a></h6>
+	    				<p><i class="ion-android-star"></i><span>{{ item.main_actor }}</span> </p>
+	    			</div>
+	    		</div>
+				{% endfor %}
+	    	</div>
+	    </div>
+	</div>
+</div>
+
+<div class="trailers">
+	<div class="container">
+		<div class="row ipad-width">
+			<div class="col-md-12">
+				<div class="videos">
+				 	<!-- <div class="slider-for-2 video-ft">
+						{% for m in movies %}
+				 		<div>
+							<video class="item-video"  controls>
+							<source src="{{ m.trailler.url }}" type="video/mp4">
+							Error Message
+							</video> 
+					    </div>
+						{% endfor %}
+					</div> -->
+					<div class="slider-nav-2 thumb-ft">
+						{% for m in movies %}
+						<div class="item">
+							<div class="trailer-img">
+								<img src="{{ m.wallpaper.url }}"  alt="Images x" width="4096" height="2737">
+							</div>
+							<div class="trailer-infor">
+	                        	<h4 class="desc"> <a href="#">{{ m.movie_title }}</a> </h4>
+	                        	<p>{{ m.main_actor }}</p>
+	                        </div>
+						</div>
+						{% endfor %}
+						
+					</div>
+				</div>   
+			</div>
+		</div>
+	</div>
+</div>
+<!-- latest new v1 section-->
+<!--end of latest new v1 section-->
+{% include 'includes/footer.html' %}
+<script>
+	var form_fields = document.getElementsByTagName('input')
+	form_fields[3].placeholder='First Name...';
+	form_fields[4].placeholder='Last Name...';
+	form_fields[5].placeholder='Username...';
+	form_fields[6].placeholder='Email...';
+	form_fields[7].placeholder='Password...';
+	form_fields[8].placeholder='Confirm Password...';
+
+	for (var field in form_fields){
+		form_fields.className += 'form-control'
+	}
+</script>
+</body>
+</html>
+{% endblock  %}

@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<body>
+
+{% include 'includes/header.html' %}
+
+<div class="hero common-hero">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero-ct">
+					<!-- <h1> movie listing - list</h1> -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="page-single movie_list">
+	<div class="container">
+		<div class="row ipad-width2">
+			<div class="col-md-8 col-sm-12 col-xs-12">
+				<div class="topbar-filter">
+					<p>Found <span> {{ movies.count }} movies</span> in total</p>
+					<!-- <label>Sort by:</label>
+					<select>
+						<option value="popularity">Popularity Descending</option>
+						<option value="popularity">Popularity Ascending</option>
+						<option value="rating">Rating Descending</option>
+						<option value="rating">Rating Ascending</option>
+						<option value="date">Release date Descending</option>
+						<option value="date">Release date Ascending</option>
+					</select> -->
+					<a href="#" class="list"><i class="ion-ios-list-outline active"></i></a>
+					<a  href="#" class="grid"><i class="ion-grid"></i></a>
+				</div>
+				{% for m in movies %}
+				<div class="movie-item-style-2">
+					<img src="{{ m.wallpaper.url }}" alt="">
+					<div class="mv-item-infor">
+						<h6><a href="#"> {{ m.movie_title }}  <span class="ml-3">({{m.release_date}})</span></a></h6>
+						<p class="describe"> {{ m.caption }} </p>
+						<p>Posted By: <a href="#"> {{ m.posted }} </a></p>
+						<p class="run-time"> Link: <a target="_blank" href="{{ m.movie_link }}"> {{ m.movie_link }}</a> </p>
+						<p>Main Actor: <a href="#"> {{ m.main_actor }} </a></p>
+					</div>
+				</div>
+				{% endfor %}
+				
+				<div class="topbar-filter">
+					<label>Movies per page:</label>
+					<select>
+						<option value="range">5 Movies</option>
+						<option value="saab">10 Movies</option>
+					</select>
+					<div class="pagination2">
+						<span>Page 1 of 2:</span>
+						<a class="active" href="#">1</a>
+						<a href="#">2</a>
+						<a href="#"><i class="ion-arrow-right-b"></i></a>
+					</div>
+				</div>
+			</div>
+			<!-- <div class="col-md-4 col-sm-12 col-xs-12">
+				<div class="sidebar">
+					<div class="searh-form">
+						<h4 class="sb-title">Search for movie</h4>
+						<form class="form-style-1" action="#">
+							<div class="row">
+								<div class="col-md-12 form-it">
+									<label>Movie name</label>
+									<input type="text" placeholder="Enter keywords">
+								</div>
+								<div class="col-md-12 form-it">
+									<label>Genres & Subgenres</label>
+									<div class="group-ip">
+										<select
+											name="skills" multiple="" class="ui fluid dropdown">
+											<option value="">Enter to filter genres</option>
+											<option value="Action1">Action</option>
+					                        <option value="Action2">Romantic</option>
+					                        <option value="Action3">Comedy</option>
+					                        <option value="Action4">Horror</option>
+					                        <option value="Action5">Adventure</option>
+										</select>
+									</div>
+									
+								</div>
+								<div class="col-md-12 form-it">
+									<label>Rating Range</label>
+									
+									 <select>
+										<option value="range">-- Select the rating range below --</option>
+										<option value="saab">-- Select the rating range below --</option>
+										<option value="saab">-- Select the rating range below --</option>
+										<option value="saab">-- Select the rating range below --</option>
+									</select>
+									
+								</div>
+								<div class="col-md-12 form-it">
+									<label>Release Year</label>
+									<div class="row">
+										<div class="col-md-6">
+											<select>
+												<option value="range">From</option>
+												<option value="number">10</option>
+												<option value="number">20</option>
+												<option value="number">30</option>
+											</select>
+										</div>
+										<div class="col-md-6">
+											<select>
+												<option value="range">To</option>
+												<option value="number">20</option>
+												<option value="number">30</option>
+												<option value="number">40</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-12 ">
+									<input class="submit" type="submit" value="Search">
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div> -->
+		</div>
+	</div>
+</div>
+<!-- footer section-->
+{% include 'includes/footer.html' %}
+<!-- end of footer section-->
+</body>
+{% endblock  %}
